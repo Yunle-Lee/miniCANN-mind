@@ -174,7 +174,8 @@ def run_all_benchmarks(args):
     if _HAS_NPU:
         for i in range(torch.npu.device_count()):
             p = torch.npu.get_device_properties(i)
-            print(f"  npu:{i} - {p.name} - {p.total_mem/1024**3:.1f}GB HBM")
+            total_mem = getattr(p, 'total_memory', getattr(p, 'total_mem', 0))
+            print(f"  npu:{i} - {p.name} - {total_mem/1024**3:.1f}GB HBM")
     print(f"  数据类型: {args.dtype}")
     print(f"  模型: {args.hidden_size}dim, {args.num_hidden_layers}层, {'MoE' if args.use_moe else 'Dense'}")
 
