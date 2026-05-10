@@ -1,8 +1,21 @@
 # Ascend MiniMind
 
-> 华为昇腾 NPU 上的轻量 LLM 训练项目，基于 [jingyaogong/minimind](https://github.com/jingyaogong/minimind) 适配
+> 华为昇腾 NPU 上的轻量 LLM 训练项目，基于 [jingyaogong/minimind](https://github.com/jingyaogong/minimind) 适配，深度集成华为 NPU 融合算子
 
-将 64M 参数的小型语言模型训练流水线完整迁移至 **Ascend 910 NPU**，支持 Pretrain → SFT → DPO → PPO/GRPO → Agent RL 完整训练管线，深度集成华为 NPU 融合算子。
+将 64M 参数的小型语言模型训练流水线完整迁移至 **Ascend 910 NPU**，支持 Pretrain → SFT → DPO → PPO/GRPO → Agent RL 完整训练管线。
+
+## 训练进度
+
+| 阶段 | 状态 | Loss |
+|------|------|------|
+| ✅ 预训练 (Pretrain) | **已完成** (79390 steps) | **1.86** |
+| ⏳ SFT 指令微调 | 待运行 | — |
+| ⏳ LoRA 微调 | 待运行 | — |
+| ⏳ DPO 偏好对齐 | 待运行 | — |
+| ⏳ GRPO 强化学习 | 待运行 | — |
+| ⏳ Agent 工具调用 | 待运行 | — |
+
+![Pretrain Loss Curve](images/pretrain_loss_curve.png)
 
 ## 环境
 
@@ -43,22 +56,10 @@ python scripts/benchmark_npu.py --bench_inference 1
 
 ## 文档
 
-完整教程请查阅 **[TUTORIAL.md](./TUTORIAL.md)**，包含：
-
-- [x] 环境搭建与验证
-- [x] 数据准备（ModelScope 一键下载）
-- [x] 预训练从零开始
-- [x] SFT 指令微调
-- [x] LoRA 高效微调
-- [x] DPO 偏好对齐
-- [x] PPO / GRPO 强化学习
-- [x] Agent 工具调用训练
-- [x] NPU 融合算子优化
-- [x] 性能基准测试
-- [x] 分布式多卡训练
-- [x] 推理与对话测试
-- [x] 性能调优建议
-- [x] 常见问题排查
+| 文档 | 说明 |
+|------|------|
+| **[TUTORIAL.md](./TUTORIAL.md)** | 完整教程（环境→数据→预训练→SFT→RL→推理） |
+| **[SESSION_HANDOVER.md](./SESSION_HANDOVER.md)** | 任务交接（当前状态、已知问题、下一步） |
 
 ## 与原始版差异
 
